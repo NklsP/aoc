@@ -1,0 +1,67 @@
+# get lines to array
+file = open('07/input1.txt', 'r')
+Lines = file.read().splitlines()
+
+Rules = []
+
+class Rule():
+    def __init__(self, rule=""):
+        self.rule = rule
+        self.bag = ""
+        self.contents = []
+        self.quantitys = []
+
+        self.bag = Bag(rule.split(" bags contain ")[0])
+
+        if "no other bags." not in rule:
+            for content in rule.split(" bags contain ")[1].split(","):
+                self.quantitys.append(int(content.lstrip().split(" ")[0]))
+                self.contents.append(content.lstrip().split(content.lstrip().split(" ")[0])[1].strip())
+        else:
+            self.bag.basgInside = 0
+    
+    def __str__(self):
+        return self.bag.color
+    def __len__(self):
+        if len(self.quantitys) == 0:
+            self.bag.basgInside = 0
+            return 0
+        return max(self.quantitys)
+            
+
+class Bag():
+    def __init__(self, color, bagsInside=1):
+        self.color = color
+        self.basgInside = bagsInside
+    def __str__(self):
+        return self.color
+
+# rule = Rule("drab tomato bags contain no other bags.")
+
+# print(rule.bag.color)
+
+# for q in rule.quantitys:
+#     print(q)
+
+# for c in rule.contents:
+#     print(c.color)
+
+for line in Lines:
+    Rules.append(Rule(line))
+
+bags = ["shiny gold"]
+
+arr = []
+
+for r in Rules:
+    if r.bag.color == "shiny gold":
+        arr = r.quantitys
+
+        for i in range(len(r.contents)):
+            for rr in Rules:
+                if rr.bag.color == r.contents[i]:
+                    for x in rr.bag.quantitys
+                    arr.append(r.quantitys[i])
+
+
+print(arr)
