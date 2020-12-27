@@ -35,33 +35,3 @@ class Bag():
         self.basgInside = bagsInside
     def __str__(self):
         return self.color
-
-# rule = Rule("drab tomato bags contain no other bags.")
-
-# print(rule.bag.color)
-
-# for q in rule.quantitys:
-#     print(q)
-
-# for c in rule.contents:
-#     print(c.color)
-
-for line in Lines:
-    Rules.append(Rule(line))
-
-bags = ["shiny gold"]
-
-arr = []
-
-for r in Rules:
-    if r.bag.color == "shiny gold":
-        arr = r.quantitys
-
-        for i in range(len(r.contents)):
-            for rr in Rules:
-                if rr.bag.color == r.contents[i]:
-                    for x in rr.bag.quantitys
-                    arr.append(r.quantitys[i])
-
-
-print(arr)
